@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // create cheatLauncher
-    //random comment
+
 
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
