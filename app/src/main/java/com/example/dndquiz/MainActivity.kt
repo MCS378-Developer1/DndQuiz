@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 
 // add a log variable for debugging
 private const val TAG = "MainActivity"
-
+//add
 
 class MainActivity : AppCompatActivity() {
     // create two button objects ready to go
