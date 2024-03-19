@@ -23,7 +23,7 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     // create two button objects ready to go
     private lateinit var binding: ActivityMainBinding
-//random commentt
+
     //private lateinit var trueButton: Button
     //private lateinit var falseButton: Button
     // question bank
