@@ -11,9 +11,9 @@
     <string name="correct_toast">Chris says you are right!</string>
     <string name="next_button"> NEXT! </string>
     <string name="prev_button"> PREVIOUS! </string>
-    <string name = "warning_text"> Cheating is wrong, are you sure you want to do this?</string>
-    <string name = "show_answer_button">Show Answer!</string>
-    <string name = "cheat_button">(Cheat)</string>
-    <string name = "cheater_toast">You\'re a cheater!</string>
+    <string name="warning_text"> Cheating is wrong, are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer!</string>
+    <string name="cheat_button">(Cheat)</string>
+    <string name="cheater_toast">You\'re a cheater!</string>
     <string name="percentage_toast">Percentage of correct answers: %.2f%%</string>
 </resources>
