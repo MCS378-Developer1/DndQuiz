@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 
 // add a log variable for debugging
 private const val TAG = "MainActivity"
-
+//add
 
 class MainActivity : AppCompatActivity() {
     // create two button objects ready to go
@@ -58,14 +58,14 @@ class MainActivity : AppCompatActivity() {
             // popping out a text that says something
             //Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_LONG).show()
             checkAnswer(true)
-            //disableAnswerButtons()
+            disableAnswerButtons()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             // do something when you click on the false button
             //Toast.makeText(this, R.string.correct_toast, Toast.LENGTH_LONG).show()
             checkAnswer(false)
-            //disableAnswerButtons()
+            disableAnswerButtons()
         }
 
         // once you click the next button, text is going to rotate
@@ -107,13 +107,13 @@ class MainActivity : AppCompatActivity() {
         // Display true/false buttons based on whether the question has been answered
         val questionAnswered = quizViewModel.questionAnswered[quizViewModel.currentIndex]
 
-        //if (questionAnswered) {
-           // disableAnswerButtons()
+        if (questionAnswered) {
+            disableAnswerButtons()
 
-        //} else {
-         //   enableAnswerButtons()
+        } else {
+            enableAnswerButtons()
 
-    //}
+    }
     }
 
     // I need a function that checks my answer
