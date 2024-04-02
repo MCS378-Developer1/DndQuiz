@@ -13,8 +13,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.dndquiz.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import androidx.compose.runtime.getValue
+
 
 // add a log variable for debugging
 private const val TAG = "MainActivity"
@@ -23,14 +27,18 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     // create two button objects ready to go
     private lateinit var binding: ActivityMainBinding
+    private var cheatCounter=0;
+
 
     //private lateinit var trueButton: Button
     //private lateinit var falseButton: Button
+
     // question bank
     private val quizViewModel: QuizViewModel by viewModels()
 
 
     // create cheatLauncher
+//enanfsdc
 
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -45,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) is called, a process is created")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         // once your app is launched, you need to
         // you need to wire those two buttons
         // trueButton = findViewById(R.id.true_button)
@@ -83,13 +92,16 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
         Log.d(TAG, "We got a CheatViewModel: CheatViewModel")
+
         binding.cheatButton.setOnClickListener {
             // if you click this, start cheatActivity
             val answerIsTrue = quizViewModel.currentQuestionAnswer
+
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
             //startActivity(intent)
             cheatLauncher.launch(intent)
             quizViewModel.cheatedStatus[quizViewModel.currentIndex] = true
+            cheatCounter++
 
         }
         updateQuestion()
@@ -115,7 +127,7 @@ class MainActivity : AppCompatActivity() {
     }
     }
 
-    // I need a function that checks my answer
+       // I need a function that checks my answer
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
         quizViewModel.answeredQuestions++
@@ -138,6 +150,7 @@ class MainActivity : AppCompatActivity() {
 
         if (quizViewModel.answeredQuestions == quizViewModel.questionBank.size) {
             displayPercentageToast()
+
 
         }
 
@@ -174,7 +187,8 @@ class MainActivity : AppCompatActivity() {
         val percentage =
             (quizViewModel.answeredCorrect.toDouble() / quizViewModel.answeredQuestions.toDouble()) * 100
         val percentageString = getString(R.string.percentage_toast, percentage)
-        Toast.makeText(this, percentageString, Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(this, percentageString + " and you cheated on "+ cheatCounter.toString()+ " questions", Toast.LENGTH_SHORT).show()
     }
     private fun disableAnswerButtons() {
         binding.trueButton.isEnabled = false
